@@ -4,9 +4,12 @@ import update from 'immutability-helper'
 
 export const SET_COMPANIES = 'company/SET_COMPANIES'
 export const SAGA_GET_COMPANIES = 'company/SAGA_GET_COMPANIES'
+export const SAGA_ADD_COMPANY = 'company/SAGA_ADD_COMPANY'
+export const SAGA_COMPANY_TITLE_UPDATE = 'company/SAGA_COMPANY_TITLE_UPDATE'
 
 const initialState = {
-  companies: []
+  companies: [],
+  title: ''
 }
 
 export default function reducer(state: Object = initialState, action: Action) {
@@ -14,6 +17,8 @@ export default function reducer(state: Object = initialState, action: Action) {
   switch (action.type) {
     case SET_COMPANIES:
       return update(state, {companies: {$set: p.companies}})
+    case SAGA_COMPANY_TITLE_UPDATE:
+      return update(state, {title: {$set: p}})
     default:
       return state
   }
